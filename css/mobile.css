@@ -1,0 +1,106 @@
+/* PWA + 手机横屏适配补丁 */
+html, body {
+  min-height: 100%;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#mobileTools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#mobileTools button,
+#pwaInstallBtn {
+  width: auto;
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+#boardWrap {
+  touch-action: pan-x pan-y;
+}
+
+#board.boardFit {
+  transform-origin: top left;
+}
+
+@media (max-width: 900px) {
+  #layout {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  #leftPanel,
+  #rightPanel {
+    width: 100%;
+    min-width: 0;
+    border-radius: 16px;
+  }
+
+  .topBar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 241, 247, .92);
+    backdrop-filter: blur(8px);
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  #rollDiceBtn {
+    width: 150px;
+    min-height: 48px;
+  }
+
+  #eventContent {
+    font-size: 22px;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  #rightPanel::before {
+    content: "建议横屏游玩，棋盘显示更完整";
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.75);
+    color: #7b2e52;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1000px) {
+  #layout {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  #leftPanel {
+    width: 42vw;
+    min-width: 340px;
+  }
+
+  #rightPanel {
+    flex: 1;
+  }
+
+  #eventPanel {
+    min-height: 108px;
+    padding: 12px;
+  }
+
+  #eventContent {
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  #logPanel {
+    display: none;
+  }
+}
