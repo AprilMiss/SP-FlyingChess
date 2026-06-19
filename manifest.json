@@ -1,0 +1,25 @@
+{
+  "name": "SP飞行棋",
+  "short_name": "SP飞行棋",
+  "description": "可离线运行的 SP 飞行棋桌游编辑器",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#fff1f5",
+  "theme_color": "#d65a82",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
