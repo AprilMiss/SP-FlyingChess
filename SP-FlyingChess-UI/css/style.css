@@ -1,0 +1,380 @@
+:root{
+  --bg1:#fff1f5;
+  --bg2:#efe9ff;
+  --panel:#fffafc;
+  --card:#ffffff;
+  --line:#efd3dc;
+  --text:#3a2a32;
+  --muted:#927482;
+  --primary:#d65a82;
+  --primary2:#9b5de5;
+  --danger:#d94f4f;
+  --reward:#ffe070;
+  --punish:#ff6f77;
+  --special:#b983ff;
+  --trap:#ffb45f;
+  --start:#fff8e8;
+  --goal:#ffffff;
+  --path:#7f8cff;
+  --shadow:0 12px 30px rgba(108,44,77,.12);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Microsoft YaHei",sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+}
+#layout{height:100vh;display:flex;gap:14px;padding:14px}
+#leftPanel{
+  width:530px;min-width:430px;overflow:auto;
+  background:rgba(255,250,252,.92);
+  border:1px solid rgba(239,211,220,.9);
+  border-radius:20px;padding:14px;box-shadow:var(--shadow);
+}
+#rightPanel{
+  flex:1;overflow:auto;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(255,255,255,.65);
+  border-radius:20px;padding:14px;box-shadow:var(--shadow);
+}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.brandIcon{
+  width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;color:white;font-size:24px;
+  background:linear-gradient(135deg,#ff7aa2,#9b5de5);
+  box-shadow:0 8px 18px rgba(214,90,130,.3);
+}
+h1{margin:0;font-size:25px;letter-spacing:.5px}
+.subTitle{margin-top:4px;color:var(--muted);font-size:13px}
+.panelSection{
+  border:1px solid var(--line);border-radius:16px;
+  margin-bottom:12px;background:rgba(255,255,255,.75);
+  overflow:hidden;
+}
+.sectionHeader{
+  width:100%;border:none;background:linear-gradient(90deg,#fff7fa,#f8edff);
+  padding:12px 13px;text-align:left;font-size:15px;font-weight:bold;
+  cursor:pointer;color:var(--text);display:flex;justify-content:space-between;align-items:center;
+}
+.sectionHeader span{font-size:12px;color:var(--muted);font-weight:normal}
+.sectionContent{padding:12px}
+.sectionContent.collapsed{display:none}
+label{display:block;margin:9px 0 5px;font-size:13px;color:#604150}
+input,textarea,select{
+  width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:9px 10px;font-size:14px;background:#fff;color:var(--text);
+  outline:none;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:#e87aa0;box-shadow:0 0 0 3px rgba(232,122,160,.16);
+}
+textarea{resize:vertical;line-height:1.4}
+button{
+  border:none;border-radius:12px;padding:10px 12px;margin-top:9px;
+  cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));
+  font-size:14px;font-weight:bold;transition:.18s ease;box-shadow:0 7px 14px rgba(214,90,130,.18);
+}
+button:hover{transform:translateY(-1px);filter:brightness(1.03)}
+button:active{transform:translateY(0)}
+button.danger{background:linear-gradient(135deg,#e85d75,#c0392b)}
+.saveBtn{width:100%;background:linear-gradient(135deg,#7a5c68,#57424d)}
+.hint{color:var(--muted);font-size:12px;margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.boardButtons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.playerCard,.bodyCard{
+  border:1px solid var(--line);background:#fff;border-radius:14px;
+  padding:10px;margin:9px 0;box-shadow:0 6px 14px rgba(100,40,70,.06);
+}
+.playerHeader,.bodyHeader{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:6px}
+.bodyMeta{color:var(--muted);font-size:12px}
+.bodyControls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.percentBar{height:8px;background:#f0dce4;border-radius:99px;overflow:hidden;margin-top:5px}
+.percentFill{height:100%;background:linear-gradient(90deg,#ff7aa2,#9b5de5);border-radius:99px}
+.miniForm{display:flex;gap:8px;align-items:center}
+.miniForm input{flex:1}.miniForm button{width:96px}
+.fileLabel{
+  display:block;margin-top:9px;background:linear-gradient(135deg,#8d6e7d,#5d4b57);
+  color:white;padding:10px;text-align:center;border-radius:12px;cursor:pointer;font-weight:bold;
+}
+.fileLabel input{display:none}
+.topBar{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+#rollDiceBtn{width:180px;font-size:18px;padding:13px}
+#turnInfo{
+  background:rgba(255,255,255,.82);border:1px solid var(--line);
+  padding:13px;border-radius:16px;flex:1;font-weight:bold;
+}
+#eventPanel{
+  background:linear-gradient(135deg,#39202b,#5f2f4a);
+  color:#fff;min-height:150px;border-radius:20px;padding:18px;margin-bottom:12px;
+  box-shadow:0 14px 28px rgba(70,25,45,.2);
+}
+.eventTitle{color:#ffdce8;font-size:12px;margin-bottom:8px;letter-spacing:.8px}
+#eventContent{font-size:28px;line-height:1.5;font-weight:bold;white-space:pre-line}
+.legend{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.legendItem{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.7);font-size:13px;box-shadow:0 4px 10px rgba(70,30,50,.08)}
+.startDot{background:var(--start)}.goalDot{background:var(--goal)}
+.rewardDot{background:var(--reward)}.punishDot{background:var(--punish)}.specialDot{background:var(--special)}.trapDot{background:var(--trap)}
+#boardWrap{
+  background:linear-gradient(135deg,#dff9ef,#e3f1ff);
+  border:4px solid rgba(188,137,255,.75);
+  border-radius:20px;padding:22px;overflow:auto;
+}
+#board{
+  position:relative;
+  min-width:680px;
+  min-height:560px;
+  margin:auto;
+}
+.pathLineSvg{
+  position:absolute;
+  inset:0;
+  overflow:visible;
+  pointer-events:none;
+  z-index:0;
+}
+.pathLine{
+  stroke:var(--path);
+  stroke-width:3;
+  stroke-dasharray:6 5;
+  fill:none;
+  opacity:.78;
+}
+.cell{
+  width:58px;
+  height:58px;
+  border:2px solid rgba(90,71,83,.18);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:11px;border-radius:12px;position:absolute;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 4px 10px rgba(80,40,60,.12);
+  transition:transform .18s ease, box-shadow .18s ease;
+  z-index:2;
+}
+.cell:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(80,40,60,.18)}
+.cell.reward{background:var(--reward)}
+.cell.punish{background:var(--punish)}
+.cell.special{background:var(--special)}
+.cell.trap{background:var(--trap)}
+.cell.start{
+  background:#fffaf3;
+  border:3px solid #ff8b6e;
+  box-shadow:0 0 0 4px rgba(255,139,110,.18),0 6px 16px rgba(80,40,60,.2);
+}
+.cell.goal{
+  background:#fff;
+  border:3px solid #5d7687;
+}
+.cellIcon{font-size:26px;line-height:1}
+.cellIndex{position:absolute;right:5px;bottom:3px;font-size:9px;color:#4b3440;opacity:.45}
+.cellLabel{font-size:10px;font-weight:bold;color:#4b3440;margin-top:1px}
+.playerStack{
+  position:absolute;
+  left:50%;
+  top:-16px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:2px;
+  z-index:5;
+}
+.playerToken{
+  min-width:28px;
+  height:28px;
+  padding:0 5px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fff,#ffe5ef);
+  color:#7b2e52;
+  font-size:11px;
+  font-weight:bold;
+  display:grid;
+  place-items:center;
+  border:2px solid #ff9ec0;
+  box-shadow:0 5px 10px rgba(120,40,80,.25);
+}
+.playerToken::before{
+  content:"❤";
+  font-size:9px;
+  color:#e85d8d;
+  margin-right:2px;
+}
+.movingToken{
+  position:absolute;z-index:80;pointer-events:none;
+  min-width:40px;height:34px;padding:6px 9px;border-radius:999px;
+  background:linear-gradient(135deg,#fff,#ffe5ef);
+  border:2px solid #ff9ec0;color:#7b2e52;font-size:13px;font-weight:bold;
+  display:grid;place-items:center;
+  box-shadow:0 14px 24px rgba(120,40,80,.32);
+  transition:left .22s ease, top .22s ease;
+}
+.movingToken::before{
+  content:"❤ ";
+  color:#e85d8d;
+}
+#logPanel{
+  background:rgba(255,255,255,.78);border:1px solid var(--line);
+  padding:12px;margin-top:12px;border-radius:18px;
+}
+#logList{max-height:190px;overflow:auto;font-size:13px}
+.logItem{border-bottom:1px solid #f2dce4;padding:5px 0;color:#5d4652}
+@media(max-width:960px){
+  #layout{flex-direction:column;height:auto}
+  #leftPanel{width:100%;min-width:0}
+}
+
+
+/* === 图标替换补丁：奖励√ / 陷阱× / 特殊翅膀图标 === */
+.rewardCheckIcon{
+  font-size:34px;
+  font-weight:900;
+  line-height:1;
+  color:#2f8f5b;
+  text-shadow:0 2px 0 rgba(255,255,255,.6);
+}
+
+.trapCrossIcon{
+  font-size:32px;
+  font-weight:900;
+  line-height:1;
+  color:#7e3443;
+  transform:scale(.9);
+  text-shadow:0 2px 0 rgba(255,255,255,.45);
+}
+
+.specialWingIconWrap{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+}
+
+.specialWingIcon{
+  width:38px;
+  height:38px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 2px 1px rgba(255,255,255,.85));
+}
+
+
+/* === 终点胜利弹窗：王冠玩家头像 + 可爱圆润奖品提示 === */
+#winnerOverlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(50,20,38,.48);
+  backdrop-filter:blur(6px);
+  z-index:9999;
+  animation:winnerFadeIn .18s ease;
+}
+
+#winnerOverlay.show{
+  display:flex;
+}
+
+.winnerModal{
+  width:min(520px,92vw);
+  position:relative;
+  padding:34px 28px 30px;
+  border-radius:32px;
+  text-align:center;
+  background:
+    radial-gradient(circle at top left, rgba(255,220,235,.95), transparent 42%),
+    radial-gradient(circle at bottom right, rgba(214,184,255,.9), transparent 45%),
+    linear-gradient(135deg,#fff7fb,#fff0f7 48%,#f6edff);
+  border:3px solid rgba(255,174,205,.95);
+  box-shadow:
+    0 26px 70px rgba(97,35,71,.38),
+    inset 0 2px 0 rgba(255,255,255,.88);
+  animation:winnerPop .32s cubic-bezier(.2,1.25,.3,1);
+}
+
+.winnerClose{
+  position:absolute;
+  right:16px;
+  top:14px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:none;
+  padding:0;
+  margin:0;
+  background:rgba(126,62,89,.14);
+  color:#7d3d59;
+  font-size:24px;
+  line-height:34px;
+  box-shadow:none;
+}
+
+.winnerCrown{
+  font-size:52px;
+  line-height:1;
+  margin-bottom:-4px;
+  filter:drop-shadow(0 5px 8px rgba(168,112,0,.26));
+  animation:crownBounce 1.4s ease-in-out infinite;
+}
+
+.winnerAvatar{
+  width:116px;
+  height:116px;
+  margin:0 auto 14px;
+  border-radius:36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  color:#7b2e52;
+  font-weight:900;
+  font-size:26px;
+  background:linear-gradient(135deg,#ffffff,#ffe4ef);
+  border:4px solid #ff9ec0;
+  box-shadow:
+    0 14px 24px rgba(120,40,80,.28),
+    inset 0 2px 0 rgba(255,255,255,.9);
+}
+
+.winnerHeart{
+  font-size:34px;
+  color:#e85d8d;
+  text-shadow:0 3px 0 rgba(255,255,255,.7);
+}
+
+.winnerTitle{
+  font-family:"Comic Sans MS","幼圆","Microsoft YaHei",Arial,sans-serif;
+  font-size:34px;
+  font-weight:900;
+  color:#8d365d;
+  letter-spacing:1px;
+  margin:8px 0 14px;
+  text-shadow:0 3px 0 rgba(255,255,255,.75);
+}
+
+.winnerPrize{
+  font-family:"Comic Sans MS","幼圆","Microsoft YaHei",Arial,sans-serif;
+  font-size:24px;
+  line-height:1.45;
+  font-weight:900;
+  color:#fff;
+  padding:18px 20px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#d65a82,#9b5de5);
+  box-shadow:
+    0 12px 24px rgba(151,77,143,.28),
+    inset 0 2px 0 rgba(255,255,255,.28);
+}
+
+@keyframes winnerFadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes winnerPop{
+  from{transform:scale(.82) translateY(18px);opacity:0}
+  to{transform:scale(1) translateY(0);opacity:1}
+}
+
+@keyframes crownBounce{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-6px) rotate(3deg)}
+}
