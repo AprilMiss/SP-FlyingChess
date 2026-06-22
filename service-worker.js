@@ -1,4 +1,5 @@
-const CACHE_NAME = "sp-flying-chess-pwa-v1";
+// 更新后改成v2、v3，每次上线都+1
+const CACHE_NAME = "flyingchess-cache-v2";
 const APP_SHELL = [
   "./",
   "./SP-FlyingChess-config.json",
