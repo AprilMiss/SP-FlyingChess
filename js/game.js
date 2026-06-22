@@ -49,8 +49,6 @@ window.Game = {
       return;
     }
 
-    if (window.SoundFX) SoundFX.roll();
-
     const step = Math.floor(Math.random() * 6) + 1;
     const from = player.pos;
     const to = Utils.clamp(player.pos + step, 0, STATE.board.length - 1);
